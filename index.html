@@ -45,7 +45,7 @@
   --maks:1040px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Helvetica,Arial,sans-serif;
@@ -566,7 +566,7 @@ footer p{font-size:.78rem;color:var(--sekundaer);max-width:46em}
       function steg(ts){
         if(t0 === null) t0 = ts;
         var p = Math.min((ts - t0)/D, 1);
-        window.scrollTo(0, y0 + d*ease(p));
+        window.scrollTo({top: y0 + d*ease(p), behavior: 'auto'});
         if(p < 1) requestAnimationFrame(steg);
         else history.pushState(null, '', a.getAttribute('href'));
       }
