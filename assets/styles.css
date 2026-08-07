@@ -1,0 +1,237 @@
+/* =====================================================================
+   Fjeldberg Westerlin - delt stilark for blogg og om-oss-sider
+   Speiler designspråket på forsiden (index.html): samme fargevariabler,
+   fontstakk, radius, maksbredde og innfasing. Minimalistisk, mørkt-på-lyst.
+   ===================================================================== */
+
+:root{
+  --tekst:#1d1d1f;
+  --sekundaer:#6e6e73;
+  --flate:#f5f5f7;
+  --hvit:#ffffff;
+  --linje:rgba(0,0,0,.1);
+  --radius:18px;
+  --maks:1040px;
+  --lese:720px;          /* lesebredde for brødtekst i artikler */
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.6;
+  color:var(--tekst);
+  background:var(--hvit);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+::selection{background:#d2d2d7}
+a{color:inherit}
+:focus-visible{outline:3px solid #0071e3;outline-offset:3px;border-radius:4px}
+img{max-width:100%;display:block}
+
+.ramme{max-width:var(--maks);margin:0 auto;padding:0 24px}
+.skjult-hopp{position:absolute;left:-9999px}
+.skjult-hopp:focus{left:16px;top:12px;background:var(--tekst);color:#fff;padding:.5em 1em;z-index:99;border-radius:980px}
+
+/* ===== Topplinje / navigasjon (identisk med forsiden) ===== */
+.topp{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid var(--linje);
+}
+.topp .ramme{
+  display:flex;flex-wrap:wrap;gap:.5em 1.8em;align-items:center;justify-content:space-between;
+  padding-top:13px;padding-bottom:12px;
+}
+.topp__navn{font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;color:var(--tekst)}
+.topp nav{display:flex;flex-wrap:wrap;gap:1.6em;align-items:center}
+.topp nav a{text-decoration:none;font-weight:400;font-size:.82rem;color:var(--sekundaer)}
+.topp nav a:hover{color:var(--tekst)}
+.topp nav a[aria-current="page"]{color:var(--tekst);font-weight:600}
+.topp nav a.topp__kontakt{
+  color:#fff;background:var(--tekst);font-weight:600;
+  padding:.45em 1.1em;border-radius:980px;
+}
+.topp nav a.topp__kontakt:hover{background:#000}
+
+/* ===== Brødsmulesti ===== */
+.sti{padding:26px 0 0}
+.sti ol{list-style:none;display:flex;flex-wrap:wrap;gap:.5em;align-items:center;font-size:.82rem;color:var(--sekundaer)}
+.sti li{display:flex;align-items:center;gap:.5em}
+.sti li+li::before{content:"/";color:var(--linje);margin-right:.1em}
+.sti a{text-decoration:none;color:var(--sekundaer)}
+.sti a:hover{color:var(--tekst)}
+.sti [aria-current="page"]{color:var(--tekst)}
+
+/* ===== Sideoverskrift ===== */
+.sidehode{padding:34px 0 8px}
+.sidehode .ramme{max-width:var(--lese)}
+h1{
+  font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(2.4rem,6vw,3.8rem);
+  line-height:1.05;
+  margin-bottom:.35em;
+}
+
+/* ===== Metalinje / byline ===== */
+.meta{font-size:.9rem;color:var(--sekundaer);margin:0 0 1.6em}
+.meta a{color:var(--tekst);text-decoration:none;border-bottom:1px solid var(--linje)}
+.meta a:hover{border-color:var(--tekst)}
+
+/* ===== Forsidebilde på artikkel ===== */
+.dekbilde{margin:0 0 2.4em}
+.dekbilde .flate{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--flate);aspect-ratio:1200/630}
+.dekbilde img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dekbilde figcaption{margin-top:.7em;font-size:.8rem;color:var(--sekundaer)}
+
+/* ===== Artikkel / lesekolonne ===== */
+.artikkel{padding:8px 0 24px}
+.artikkel .ramme{max-width:var(--lese)}
+.ingress{font-size:1.28rem;line-height:1.5;color:var(--tekst);margin:0 0 1.6em}
+.ingress b{font-weight:600}
+.artikkel h2{
+  font-weight:700;letter-spacing:-.015em;
+  font-size:clamp(1.6rem,3.6vw,2.1rem);line-height:1.12;
+  margin:1.8em 0 .5em;
+}
+.artikkel h3{
+  font-weight:700;letter-spacing:-.01em;
+  font-size:1.25rem;line-height:1.2;
+  margin:1.4em 0 .4em;
+}
+.artikkel p{margin:0 0 1.1em;color:var(--tekst)}
+.artikkel a{color:var(--tekst);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--linje)}
+.artikkel a:hover{text-decoration-color:var(--tekst)}
+.artikkel ul,.artikkel ol{margin:0 0 1.2em 1.3em;padding:0}
+.artikkel li{margin:0 0 .5em}
+.artikkel strong,.artikkel b{font-weight:600}
+.artikkel figure{margin:1.6em 0}
+.artikkel figure img{border-radius:var(--radius)}
+.artikkel figcaption{margin-top:.6em;font-size:.8rem;color:var(--sekundaer)}
+blockquote{
+  margin:1.6em 0;padding:.2em 0 .2em 1.2em;
+  border-left:3px solid var(--tekst);
+  font-size:1.2rem;line-height:1.4;letter-spacing:-.01em;color:var(--tekst);
+}
+blockquote p{margin:0}
+
+/* ===== Om-oss: portrett + tekst ===== */
+.portrett{margin:0}
+.portrett .flate{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--flate);aspect-ratio:4/5}
+.portrett img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrett figcaption{margin-top:.7em;font-size:.8rem;color:var(--sekundaer)}
+.omgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;padding:16px 0 8px}
+.omgrid .tekst{max-width:34em}
+.omgrid .tekst p{margin:0 0 1.1em;color:var(--tekst)}
+.omgrid .tekst p:first-child{font-size:1.28rem;line-height:1.5}
+.omgrid .tekst a{color:var(--tekst);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--linje)}
+.omgrid .tekst a:hover{text-decoration-color:var(--tekst)}
+
+/* ===== Tjenester / punktkort ===== */
+.tjenester{padding:8px 0 8px}
+.tjenester .ramme{max-width:var(--maks)}
+.tjenester h2{font-weight:700;letter-spacing:-.015em;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.1;margin-bottom:.8em}
+.kort3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kort3 article{background:var(--flate);border-radius:var(--radius);padding:28px}
+.kort3 h3{font-weight:700;letter-spacing:-.01em;font-size:1.25rem;margin-bottom:.4em}
+.kort3 p{font-size:.95rem;color:var(--sekundaer)}
+
+/* ===== FAQ ===== */
+.faq{padding:8px 0 8px}
+.faq .ramme{max-width:var(--lese)}
+.faq h2{font-weight:700;letter-spacing:-.015em;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.1;margin-bottom:.6em}
+.faq details{border-top:1px solid var(--linje);padding:2px 0}
+.faq details:last-of-type{border-bottom:1px solid var(--linje)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  font-weight:600;font-size:1.08rem;letter-spacing:-.01em;
+  padding:18px 40px 18px 0;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-weight:400;font-size:1.5rem;color:var(--sekundaer);line-height:1;
+  transition:transform .2s ease;
+}
+.faq details[open] summary::after{content:"–"}
+.faq details[open] summary{color:var(--tekst)}
+.faq .svar{padding:0 0 18px;color:var(--sekundaer);max-width:40em}
+.faq .svar p{margin:0 0 .8em}
+.faq .svar p:last-child{margin-bottom:0}
+.faq .svar a{color:var(--tekst)}
+
+/* ===== Interne lenker / videre lesning ===== */
+.videre{padding:16px 0 8px}
+.videre .ramme{max-width:var(--lese)}
+.videre h2{font-weight:700;letter-spacing:-.015em;font-size:1.5rem;margin-bottom:.7em}
+.videre ul{list-style:none;display:grid;gap:2px}
+.videre li{border-top:1px solid var(--linje)}
+.videre li:last-child{border-bottom:1px solid var(--linje)}
+.videre a{display:block;text-decoration:none;padding:16px 0;color:var(--tekst);font-weight:600;letter-spacing:-.01em}
+.videre a span{display:block;font-weight:400;font-size:.9rem;color:var(--sekundaer);margin-top:.2em}
+.videre a:hover{color:#000}
+.videre a:hover span{color:var(--tekst)}
+
+/* ===== Bloggoversikt: kortrutenett ===== */
+.blogghode{padding:34px 0 10px}
+.blogghode .ramme{max-width:var(--lese)}
+.blogghode p{font-size:1.2rem;color:var(--sekundaer);margin-top:.4em}
+.kortgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:24px 0}
+.blogkort{
+  display:flex;flex-direction:column;
+  background:var(--flate);border-radius:var(--radius);overflow:hidden;
+  text-decoration:none;color:var(--tekst);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.blogkort:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
+.blogkort .bilde{position:relative;aspect-ratio:1200/630;background:#e8e8ed}
+.blogkort .bilde img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.blogkort .innhold{padding:22px 24px 26px}
+.blogkort h2{font-weight:700;letter-spacing:-.01em;font-size:1.2rem;line-height:1.2;margin-bottom:.4em}
+.blogkort p{font-size:.93rem;color:var(--sekundaer);margin:0}
+.blogkort .kicker{font-size:.78rem;color:var(--sekundaer);margin-bottom:.6em}
+
+/* ===== CTA-boks ===== */
+.cta{padding:24px 0 8px}
+.cta .ramme{max-width:var(--lese)}
+.cta__boks{background:var(--flate);border-radius:var(--radius);padding:clamp(28px,4vw,40px)}
+.cta__boks h2{font-weight:700;letter-spacing:-.015em;font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.1;margin-bottom:.35em}
+.cta__boks p{color:var(--sekundaer);max-width:32em;margin-bottom:1.4em}
+.knapp{
+  display:inline-block;text-decoration:none;
+  font-weight:600;font-size:1rem;
+  padding:.85em 1.7em;border-radius:980px;
+  background:var(--tekst);color:#fff;
+  transition:background .15s ease;
+}
+.knapp:hover{background:#000}
+.knapp--lys{background:var(--hvit);color:var(--tekst);border:1px solid var(--linje)}
+.knapp--lys:hover{background:#e8e8ed}
+
+/* ===== Bunn ===== */
+footer{background:var(--flate);padding:40px 0 56px;margin-top:64px}
+footer .ramme{display:flex;flex-wrap:wrap;gap:.8em 2.5em;justify-content:space-between;align-items:center}
+footer .bunnlenker{display:flex;flex-wrap:wrap;gap:1.4em}
+footer .bunnlenker a{font-size:.82rem;color:var(--sekundaer);text-decoration:none}
+footer .bunnlenker a:hover{color:var(--tekst)}
+footer p{font-size:.78rem;color:var(--sekundaer);max-width:46em}
+
+/* ===== Innfasing (identisk med forsiden) ===== */
+.js .fase{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.js .fase.inn{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .fase{opacity:1;transform:none;transition:none}}
+
+/* ===== Responsivt ===== */
+@media (max-width:900px){
+  .omgrid{grid-template-columns:1fr;gap:28px}
+  .portrett{max-width:420px}
+  .kort3{grid-template-columns:1fr}
+  .kortgrid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .topp nav a:not(.topp__kontakt){display:none}
+  h1{font-size:clamp(2.1rem,9vw,2.8rem)}
+}

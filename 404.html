@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siden finnes ikke | Fjeldberg Westerlin</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1d1f'/%3E%3Ctext x='32' y='44' font-family='Helvetica,Arial' font-size='26' font-weight='700' text-anchor='middle' fill='%23ffffff'%3EOW%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<a class="skjult-hopp" href="#hoved">Hopp til innhold</a>
+
+<header class="topp">
+  <div class="ramme">
+    <a class="topp__navn" href="/">Fjeldberg Westerlin</a>
+    <nav aria-label="Hovedmeny">
+      <a href="/blogg/">Blogg</a>
+      <a href="/om-oss/">Om oss</a>
+      <a href="/#kontakt">Kontakt</a>
+      <a class="topp__kontakt" href="mailto:jorgen@fjeldbergwesterlin.no?subject=Samarbeid%20med%20Oskar">Ta kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="hoved">
+
+  <div class="sidehode">
+    <div class="ramme">
+      <h1>Siden finnes ikke</h1>
+      <p class="meta">Feil 404 – vi fant ikke siden du lette etter</p>
+    </div>
+  </div>
+
+  <section class="ramme fase" aria-label="Fant ikke siden">
+    <p class="ingress">Lenken kan være utdatert, eller så har adressen blitt skrevet feil. Prøv en av lenkene under, så er du raskt tilbake på sporet.</p>
+  </section>
+
+  <section class="videre fase" aria-label="Kom videre">
+    <div class="ramme">
+      <h2>Kom videre</h2>
+      <ul>
+        <li><a href="/">Hjem<span>Forsiden til Fjeldberg Westerlin</span></a></li>
+        <li><a href="/blogg/">Blogg<span>Praktiske råd om innhold og sosiale medier</span></a></li>
+        <li><a href="/om-oss/">Om oss<span>Hvem vi er og hva vi jobber med</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="ramme">
+    <div class="bunnlenker">
+      <a href="/">Hjem</a>
+      <a href="/blogg/">Blogg</a>
+      <a href="/om-oss/">Om oss</a>
+      <a href="/referanser/">Referanser</a>
+      <a href="/personvern/">Personvern</a>
+      <a href="mailto:jorgen@fjeldbergwesterlin.no">Kontakt</a>
+    </div>
+    <p>&copy; 2026 Fjeldberg Westerlin AS · Oslo · org.nr. 924 462 965</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var deler=document.querySelectorAll('.fase');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){
+    deler.forEach(function(n){n.classList.add('inn')});return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('inn');io.unobserve(e.target)}});
+  },{threshold:.15});
+  deler.forEach(function(n){io.observe(n)});
+})();
+</script>
+</body>
+</html>
